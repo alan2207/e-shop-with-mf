@@ -1,0 +1,22 @@
+{
+  "name": "e-shop-showcase-mf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "start": "concurrently \"wsrun --parallel dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alan",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "wsrun": "^5.2.4"
+  }
+}
