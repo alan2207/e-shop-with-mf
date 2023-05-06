@@ -1,6 +1,30 @@
 /** @type {import('next').NextConfig} */
 
 const NextFederationPlugin = require("@module-federation/nextjs-mf");
+const { FederatedTypesPlugin } = require("@module-federation/typescript");
+
+const getFederationConfig = (isServer) => ({
+  name: "main",
+  remotes: {
+    main: `main@http://localhost:3000/_next/static/${
+      isServer ? "ssr" : "chunks"
+    }/remoteEntry.js`,
+    products: `products@http://localhost:3001/_next/static/${
+      isServer ? "ssr" : "chunks"
+    }/remoteEntry.js`,
+    cart: `cart@http://localhost:3002/_next/static/${
+      isServer ? "ssr" : "chunks"
+    }/remoteEntry.js`,
+    checkout: `checkout@http://localhost:3003/_next/static/${
+      isServer ? "ssr" : "chunks"
+    }/remoteEntry.js`,
+  },
+  filename: "static/chunks/remoteEntry.js",
+  exposes: {
+    "./layout": "./src/components/layout.tsx",
+  },
+  shared: {},
+});
 
 const nextConfig = {
   reactStrictMode: true,
@@ -8,25 +32,11 @@ const nextConfig = {
   webpack(config, options) {
     const { isServer } = options;
 
-    config.plugins.push(
-      new NextFederationPlugin({
-        name: "main",
-        remotes: {
-          cart: `cart@http://localhost:3002/_next/static/${
-            isServer ? "ssr" : "chunks"
-          }/remoteEntry.js`,
-        },
-        filename: "static/chunks/remoteEntry.js",
-        exposes: {
-          "./layout": "./src/components/layout.tsx",
-        },
-        shared: {},
-        extraOptions: {
-          exposePages: true,
-        },
-      })
-    );
+    const mfConf = getFederationConfig(isServer);
 
+    config.plugins.push(new NextFederationPlugin(mfConf));
+
+    // config.plugins.push(new FederatedTypesPlugin({ federationConfig: mfConf }));
     return config;
   },
 };
