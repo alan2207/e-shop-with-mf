@@ -1,33 +1,19 @@
-import { CheckoutContactInfo, processCheckout } from "../checkout-api";
-import { useForm } from "shared";
+import { useForm, processCheckout, CheckoutContactInfo } from "shared";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useCart } from "cart/cart-store";
 import { CartSummary } from "cart/cart-summary";
 import Head from "next/head";
 
 export const CheckoutPage = () => {
-  const { getCartItems, clearCart } = useCart();
-
-  const products = getCartItems();
-
   const router = useRouter();
 
   const handleSubmit = (values: CheckoutContactInfo) => {
-    processCheckout({
-      contact_info: values,
-      cart_items: products.map(({ product, quantity }) => ({
-        id: product.id,
-        quantity,
-      })),
-    }).then(() => {
+    processCheckout(values).then(() => {
       alert(`Congratulations! You've successfully placed an order.
   Order details:
   ${JSON.stringify(values, null, 2)}
   `);
-
-      clearCart();
       router.push("/");
     });
   };
@@ -39,18 +25,20 @@ export const CheckoutPage = () => {
       </Head>
       <div className="bg-white">
         <div
-          className="fixed top-0 left-0 hidden w-1/2 h-full bg-white lg:block"
+          className="top-0 left-0 hidden w-1/2 h-full bg-white lg:block"
           aria-hidden="true"
         />
         <div
-          className="fixed top-0 right-0 hidden w-1/2 h-full bg-black lg:block"
+          className="top-0 right-0 hidden w-1/2 h-full bg-black lg:block"
           aria-hidden="true"
         />
 
-        <div className="relative grid grid-cols-1 mx-auto max-w-7xl gap-x-16 lg:grid-cols-2 lg:px-8 lg:pt-16">
+        <div className="relative grid grid-cols-1 mx-auto max-w-7xl gap-x-16 lg:grid-cols-2 lg:px-8">
           <h1 className="sr-only">Checkout</h1>
 
-          <CartSummary />
+          <div className="p-8 bg-black">
+            <CartSummary />
+          </div>
 
           <section
             aria-labelledby="payment-and-shipping-heading"

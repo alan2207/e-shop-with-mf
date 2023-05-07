@@ -1,9 +1,9 @@
-import { useCart } from "../cart-store";
-import { Counter, formatPrice, useNotifications } from "shared";
+import { useCart } from "cart/cart-store";
+import { Counter, formatPrice, useNotifications, Product } from "shared";
 import Link from "next/link";
 import Head from "next/head";
 import { CheckoutButton } from "checkout/checkout-button";
-import { Product } from "products/products-api";
+
 import { useCallback } from "react";
 
 export const CartPage = () => {

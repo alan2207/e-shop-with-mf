@@ -1,5 +1,7 @@
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
+import fs from "fs";
+import path from "path";
 
 type Product = {
   id: number;
@@ -22,7 +24,26 @@ type Cart = {
   }>;
 };
 
-type Data = { products: Product[]; carts: Cart[] };
+type CheckoutContactInfo = {
+  email: string;
+  card_number: string;
+  expiration_date: string;
+  cvc: string;
+  address: string;
+  city: string;
+  state: string;
+  zip_code: string;
+};
+
+type Purchase = {
+  info: CheckoutContactInfo;
+  products: Array<{
+    id: number;
+    quantity: number;
+  }>;
+};
+
+type Data = { products: Product[]; carts: Cart[]; purchases: Purchase[] };
 
 const defaultData: Data = {
   products: [
@@ -294,7 +315,14 @@ const defaultData: Data = {
     },
   ],
   carts: [],
+  purchases: [],
 };
+
+const dir = path.join(process.cwd(), "db.json");
+
+if (!fs.existsSync(dir)) {
+  fs.writeFileSync(dir, JSON.stringify(defaultData));
+}
 
 const adapter = new JSONFile<Data>("db.json");
 export const db = new Low<Data>(adapter, defaultData);
@@ -351,4 +379,20 @@ export const updateCart = async (
     });
   }
   await db.write();
+};
+
+export const processCheckout = async (
+  anonymousId: string,
+  info: CheckoutContactInfo
+) => {
+  await db.read();
+  const cart = db.data.carts.find((cart) => cart.id === anonymousId);
+  if (!cart) return false;
+  db.data.purchases.push({
+    info,
+    products: cart.products,
+  });
+  db.data.carts = db.data.carts.filter((cart) => cart.id !== anonymousId);
+  db.write();
+  return true;
 };

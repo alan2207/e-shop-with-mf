@@ -1,4 +1,4 @@
-import { Product } from "products/products-api";
+import { Product } from "shared";
 import { Counter, useNotifications } from "shared";
 import { useCallback, useState } from "react";
 import { useCart } from "../cart-store";

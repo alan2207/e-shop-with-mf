@@ -1,5 +1,5 @@
 import { AddToCart } from "cart/add-to-cart";
-import { Product, ProductRating } from "../products-api";
+import { Product, ProductRating } from "shared";
 import { formatPrice } from "shared";
 import { StarIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";

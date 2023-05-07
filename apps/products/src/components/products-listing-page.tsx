@@ -1,5 +1,4 @@
-import { Product } from "../products-api";
-import { formatPrice } from "shared";
+import { formatPrice, Product } from "shared";
 import Head from "next/head";
 import Link from "next/link";
 

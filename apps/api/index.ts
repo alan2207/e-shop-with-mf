@@ -4,6 +4,7 @@ import {
   getCartAndProducts,
   getProduct,
   getProducts,
+  processCheckout,
   updateCart,
 } from "./db";
 import cookieParser from "cookie-parser";
@@ -37,13 +38,15 @@ app.get("/products/:id", async (req, res) => {
 });
 
 app.get("/cart", async (req, res) => {
-  const anonymousId = req.cookies["anonymousid"] as string;
+  const anonymousId =
+    req.cookies["anonymousid"] || (req.headers["anonymousid"] as string);
   const data = await getCartAndProducts(anonymousId);
   res.json(data);
 });
 
 app.post("/cart", async (req, res) => {
-  const anonymousId = req.cookies["anonymousid"] as string;
+  const anonymousId =
+    req.cookies["anonymousid"] || (req.headers["anonymousid"] as string);
   if (!anonymousId) {
     res
       .status(400)
@@ -52,6 +55,21 @@ app.post("/cart", async (req, res) => {
   }
   await updateCart(anonymousId, req.body.productId, req.body.quantity);
   res.json({ success: true });
+});
+
+app.post("/checkout", async (req, res) => {
+  const anonymousId =
+    req.cookies["anonymousid"] || (req.headers["anonymousid"] as string);
+  if (!anonymousId) {
+    res
+      .status(400)
+      .json({ success: false, message: "anonymousId is required" });
+    return;
+  }
+
+  const result = await processCheckout(anonymousId, req.body);
+
+  res.json({ success: result });
 });
 
 app.listen(port, () => {

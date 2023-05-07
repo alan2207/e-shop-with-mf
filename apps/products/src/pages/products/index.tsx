@@ -1,9 +1,6 @@
-import { Product, getProducts } from "../../products-api";
+import { Product, getProducts } from "shared";
 import { GetServerSideProps } from "next";
-import { ReactElement } from "react";
 import dynamic from "next/dynamic";
-
-const Layout = dynamic(() => import("main/layout").then((mod) => mod.Layout));
 
 const ProductsListingPage = dynamic(() =>
   import("../../components/products-listing-page").then(
@@ -13,10 +10,6 @@ const ProductsListingPage = dynamic(() =>
 
 const ProductsListing = ({ products }: { products: Product[] }) => {
   return <ProductsListingPage products={products} />;
-};
-
-ProductsListing.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {

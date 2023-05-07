@@ -21,7 +21,6 @@ const getFederationConfig = (isServer) => ({
   },
   filename: "static/chunks/remoteEntry.js",
   exposes: {
-    "./checkout-api": "./src/checkout-api.ts",
     "./checkout-page": "./src/components/checkout-page.tsx",
     "./checkout-button": "./src/components/checkout-button.tsx",
   },

@@ -1,4 +1,4 @@
-import { Product } from "products/products-api";
+import { Product } from "shared";
 import { create } from "zustand";
 
 import { persist, createJSONStorage } from "zustand/middleware";
