@@ -1,8 +1,9 @@
 import { useCart } from "cart/cart-store";
-import { Counter, formatPrice, useNotifications, Product } from "shared";
+import { Counter, formatPrice, Product } from "shared";
 import Link from "next/link";
 import Head from "next/head";
 import { CheckoutButton } from "checkout/checkout-button";
+import { useNotifications } from "main/notifications";
 
 import { useCallback } from "react";
 

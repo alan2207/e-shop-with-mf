@@ -1,4 +1,4 @@
-import { uid } from "../utils";
+import { uid } from "shared";
 import { create } from "zustand";
 
 export type NotificationType = "info" | "warning" | "success" | "error";
