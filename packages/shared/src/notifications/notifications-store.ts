@@ -1,3 +1,4 @@
+import { uid } from "../utils";
 import { create } from "zustand";
 
 export type NotificationType = "info" | "warning" | "success" | "error";
@@ -8,13 +9,6 @@ export type Notification = {
   title: string;
   duration?: number;
   message?: string;
-};
-
-export const uid = () => {
-  return (performance.now().toString(36) + Math.random().toString(36)).replace(
-    /\./g,
-    ""
-  );
 };
 
 export type NotificationsStore = {
