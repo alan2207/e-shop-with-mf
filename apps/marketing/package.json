@@ -1,10 +1,10 @@
 {
   "name": "marketing",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack --mode development",
-    "start": "webpack-dev-server --open --mode development",
+    "dev": "webpack-dev-server --mode development",
     "start:live": "webpack-dev-server --open --mode development --live-reload"
   },
   "license": "MIT",
