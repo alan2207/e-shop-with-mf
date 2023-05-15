@@ -28,7 +28,7 @@ const nextConfig = {
 
     config.plugins.push(new NextFederationPlugin(mfConf));
 
-    config.plugins.push(new FederatedTypesPlugin({ federationConfig: mfConf }));
+    // config.plugins.push(new FederatedTypesPlugin({ federationConfig: mfConf }));
     return config;
   },
 };

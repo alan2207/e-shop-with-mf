@@ -15,6 +15,7 @@ const getFederationConfig = (isServer) => ({
     checkout: `checkout@http://localhost:3003/_next/static/${
       isServer ? "ssr" : "chunks"
     }/remoteEntry.js`,
+    marketing: `marketing@http://localhost:3004/remoteEntry.js`,
   },
   filename: "static/chunks/remoteEntry.js",
   exposes: {},
@@ -31,7 +32,7 @@ const nextConfig = {
 
     config.plugins.push(new NextFederationPlugin(mfConf));
 
-    config.plugins.push(new FederatedTypesPlugin({ federationConfig: mfConf }));
+    // config.plugins.push(new FederatedTypesPlugin({ federationConfig: mfConf }));
     return config;
   },
 };

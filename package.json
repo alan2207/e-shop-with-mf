@@ -9,7 +9,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces run build",
+    "build": "npm run workspaces run build",
     "start": "concurrently \"wsrun --parallel dev\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
