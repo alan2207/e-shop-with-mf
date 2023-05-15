@@ -1,8 +1,8 @@
 import { Product } from "shared";
 import { Counter } from "shared";
 import { useCallback, useState } from "react";
-import { useCart } from "cart/cart-store";
-import { useNotifications } from "main/notifications";
+import { useCart } from "../cart-store";
+import { useNotifications } from "shared";
 
 export const AddToCart = ({ product }: { product: Product }) => {
   const [quantity, setQuantity] = useState(1);

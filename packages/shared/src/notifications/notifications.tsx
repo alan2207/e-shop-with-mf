@@ -84,6 +84,8 @@ const Notification = ({
 export const Notifications = () => {
   const { notifications, dismissNotification } = useNotifications();
 
+  console.log("Notifications", { notifications });
+
   return (
     <div
       aria-live="assertive"

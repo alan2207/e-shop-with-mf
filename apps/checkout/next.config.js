@@ -6,23 +6,13 @@ const { FederatedTypesPlugin } = require("@module-federation/typescript");
 const getFederationConfig = (isServer) => ({
   name: "checkout",
   remotes: {
-    main: `main@http://localhost:3000/_next/static/${
-      isServer ? "ssr" : "chunks"
-    }/remoteEntry.js`,
-    products: `products@http://localhost:3001/_next/static/${
-      isServer ? "ssr" : "chunks"
-    }/remoteEntry.js`,
     cart: `cart@http://localhost:3002/_next/static/${
-      isServer ? "ssr" : "chunks"
-    }/remoteEntry.js`,
-    checkout: `checkout@http://localhost:3003/_next/static/${
       isServer ? "ssr" : "chunks"
     }/remoteEntry.js`,
   },
   filename: "static/chunks/remoteEntry.js",
   exposes: {
     "./checkout-page": "./src/components/checkout-page.tsx",
-    "./checkout-button": "./src/components/checkout-button.tsx",
   },
   shared: {},
 });
@@ -37,7 +27,7 @@ const nextConfig = {
 
     config.plugins.push(new NextFederationPlugin(mfConf));
 
-    // config.plugins.push(new FederatedTypesPlugin({ federationConfig: mfConf }));
+    config.plugins.push(new FederatedTypesPlugin({ federationConfig: mfConf }));
     return config;
   },
 };

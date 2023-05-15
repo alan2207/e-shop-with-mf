@@ -29,6 +29,8 @@ export const useNotifications = create<NotificationsStore>((set, get) => ({
         get().dismissNotification(id);
       }, notification.duration);
     }
+
+    console.log(get().notifications);
   },
   dismissNotification: (id) => {
     set((state) => ({

@@ -33,7 +33,7 @@ const HeaderCart = () => {
 };
 
 const LazyHeaderCart = dynamic(() => Promise.resolve(HeaderCart), {
-  ssr: true,
+  ssr: false,
 });
 
 const Header = () => {

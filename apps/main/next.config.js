@@ -6,9 +6,6 @@ const { FederatedTypesPlugin } = require("@module-federation/typescript");
 const getFederationConfig = (isServer) => ({
   name: "main",
   remotes: {
-    main: `main@http://localhost:3000/_next/static/${
-      isServer ? "ssr" : "chunks"
-    }/remoteEntry.js`,
     products: `products@http://localhost:3001/_next/static/${
       isServer ? "ssr" : "chunks"
     }/remoteEntry.js`,
@@ -20,10 +17,7 @@ const getFederationConfig = (isServer) => ({
     }/remoteEntry.js`,
   },
   filename: "static/chunks/remoteEntry.js",
-  exposes: {
-    "./shell": "./src/components/shell.tsx",
-    "./notifications": "./src/notifications/index.ts",
-  },
+  exposes: {},
   shared: {},
 });
 
@@ -37,7 +31,7 @@ const nextConfig = {
 
     config.plugins.push(new NextFederationPlugin(mfConf));
 
-    // config.plugins.push(new FederatedTypesPlugin({ federationConfig: mfConf }));
+    config.plugins.push(new FederatedTypesPlugin({ federationConfig: mfConf }));
     return config;
   },
 };

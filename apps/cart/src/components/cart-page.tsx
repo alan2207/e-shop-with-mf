@@ -1,11 +1,11 @@
-import { useCart } from "cart/cart-store";
+import { useCart } from "../cart-store";
 import { Counter, formatPrice, Product } from "shared";
 import Link from "next/link";
 import Head from "next/head";
-import { CheckoutButton } from "checkout/checkout-button";
-import { useNotifications } from "main/notifications";
+import { useNotifications } from "shared";
 
 import { useCallback } from "react";
+import { useRouter } from "next/router";
 
 export const CartPage = () => {
   const { getCartItems, getCartTotal } = useCart();
@@ -95,6 +95,20 @@ export const CartPage = () => {
         </section>
       </div>
     </>
+  );
+};
+
+const CheckoutButton = () => {
+  const router = useRouter();
+  return (
+    <button
+      className="w-full px-4 py-3 text-base font-medium text-white bg-black border rounded-md shadow-sm focus:ring-offset-gray-50"
+      onClick={() => {
+        router.push("/checkout");
+      }}
+    >
+      Go to Checkout
+    </button>
   );
 };
 
