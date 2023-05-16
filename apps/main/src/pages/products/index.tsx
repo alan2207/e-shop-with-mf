@@ -2,10 +2,14 @@ import { Product, getProducts } from "shared";
 import { GetServerSideProps } from "next";
 import dynamic from "next/dynamic";
 
-const ProductsListingPage = dynamic(() =>
-  import("products/products-listing-page").then(
-    (mod) => mod.ProductsListingPage
-  )
+const ProductsListingPage = dynamic(
+  () =>
+    import("products/products-listing-page").then(
+      (mod) => mod.ProductsListingPage
+    ),
+  {
+    ssr: false,
+  }
 );
 
 const ProductsListing = ({ products }: { products: Product[] }) => {

@@ -9,14 +9,14 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run workspaces run build",
-    "start": "concurrently \"wsrun --parallel dev\"",
+    "build": "lerna run build",
+    "dev": "lerna run --parallel dev",
+    "start": "lerna run --parallel start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Alan",
+  "author": "Alan Alickovic",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.0.1",
-    "wsrun": "^5.2.4"
+    "lerna": "^6.6.2"
   }
 }

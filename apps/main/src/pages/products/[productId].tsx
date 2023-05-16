@@ -4,8 +4,14 @@ import { GetServerSideProps } from "next";
 
 import dynamic from "next/dynamic";
 
-const ProductDetailsPage = dynamic(() =>
-  import("products/product-details-page").then((mod) => mod.ProductDetailsPage)
+const ProductDetailsPage = dynamic(
+  () =>
+    import("products/product-details-page").then(
+      (mod) => mod.ProductDetailsPage
+    ),
+  {
+    ssr: false,
+  }
 );
 
 const ProductDetails = ({ product }: { product: Product }) => {
@@ -13,6 +19,12 @@ const ProductDetails = ({ product }: { product: Product }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  if (!ctx.params?.productId) {
+    return {
+      notFound: true,
+    };
+  }
+
   const product = await getProduct(+ctx.params?.productId as number);
 
   return {

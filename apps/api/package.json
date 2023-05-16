@@ -4,7 +4,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch index.ts"
+    "dev": "tsx watch index.ts",
+    "start": "tsx watch index.ts"
   },
   "dependencies": {
     "body-parser": "^1.20.2",

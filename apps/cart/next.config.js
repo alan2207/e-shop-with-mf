@@ -1,5 +1,3 @@
-/** @type {import('next').NextConfig} */
-
 const NextFederationPlugin = require("@module-federation/nextjs-mf");
 const { FederatedTypesPlugin } = require("@module-federation/typescript");
 
@@ -16,6 +14,7 @@ const getFederationConfig = (isServer) => ({
   shared: {},
 });
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ["shared"],

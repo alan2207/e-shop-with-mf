@@ -15,6 +15,12 @@ const ProductDetails = ({ product }: { product: Product }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  if (!ctx.params?.productId) {
+    return {
+      notFound: true,
+    };
+  }
+
   const product = await getProduct(+ctx.params?.productId as number);
 
   return {

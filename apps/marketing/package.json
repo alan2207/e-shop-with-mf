@@ -5,6 +5,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development",
+    "start": "serve -s dist -p 3004",
     "start:live": "webpack-dev-server --open --mode development --live-reload"
   },
   "license": "MIT",
@@ -20,6 +21,7 @@
     "html-webpack-plugin": "^4.5.0",
     "postcss": "^8.2.1",
     "postcss-loader": "^4.1.0",
+    "serve": "^14.2.0",
     "style-loader": "^3.3.0",
     "tailwindcss": "^2.0.2",
     "ts-loader": "^8.0.12",
