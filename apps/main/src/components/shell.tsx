@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import React, { ReactNode, useEffect } from "react";
-import { Notifications, setAnonymousIdUser } from "shared";
+import { setAnonymousIdUser } from "shared";
 import { LayoutProps } from "./layout";
 
 const Layout = dynamic<LayoutProps>(() =>
@@ -14,7 +14,6 @@ export const Shell = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <Notifications />
       <Layout>{children}</Layout>
     </>
   );

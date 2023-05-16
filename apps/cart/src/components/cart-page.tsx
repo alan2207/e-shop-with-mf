@@ -2,7 +2,6 @@ import { useCart } from "../cart-store";
 import { Counter, formatPrice, Product } from "shared";
 import Link from "next/link";
 import Head from "next/head";
-import { useNotifications } from "shared";
 
 import { useCallback } from "react";
 import { useRouter } from "next/router";
@@ -121,21 +120,13 @@ const ProductItem = ({
   quantity: number;
   price: number;
 }) => {
-  const { showNotification } = useNotifications();
-
   const { removeCartItem, updateCartItemQuantity } = useCart();
 
   const handleQuantityChange = useCallback(
     (value: number) => {
       updateCartItemQuantity(product, value);
-      showNotification({
-        title: "Cart Updated",
-        message: `Updated ${product.title} quantity to ${value}`,
-        type: "success",
-        duration: 5000,
-      });
     },
-    [product, showNotification, updateCartItemQuantity]
+    [product, updateCartItemQuantity]
   );
 
   return (
@@ -174,12 +165,6 @@ const ProductItem = ({
               className="text-sm font-medium text-red-600 hover:text-red-500"
               onClick={() => {
                 removeCartItem(product);
-                showNotification({
-                  title: "Cart Updated",
-                  message: `Removed ${product.title} from cart`,
-                  type: "success",
-                  duration: 5000,
-                });
               }}
             >
               <span>Remove</span>

@@ -9,7 +9,7 @@ const mfConf = {
   remotes: {},
   exposes: {
     "./Promo": "./src/components/Promo.vue",
-    "./mount-promo": "./src/components/mount-promo.ts",
+    "./inject-promo": "./src/components/inject-promo.ts",
   },
   shared: require("./package.json").dependencies,
 };

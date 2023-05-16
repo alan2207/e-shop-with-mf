@@ -1,21 +1,22 @@
-import { useForm, processCheckout, CheckoutContactInfo } from "shared";
+import { useForm, CheckoutContactInfo } from "shared";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { CartSummary } from "cart/cart-summary";
 import Head from "next/head";
+import { useCart } from "cart/cart-store";
 
 export const CheckoutPage = () => {
   const router = useRouter();
+  const { clearCart } = useCart();
 
   const handleSubmit = (values: CheckoutContactInfo) => {
-    processCheckout(values).then(() => {
-      alert(`Congratulations! You've successfully placed an order.
+    alert(`Congratulations! You've successfully placed an order.
   Order details:
   ${JSON.stringify(values, null, 2)}
   `);
-      router.push("/");
-    });
+    clearCart();
+    router.push("/");
   };
 
   return (

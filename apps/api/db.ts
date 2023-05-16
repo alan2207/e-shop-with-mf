@@ -46,6 +46,7 @@ type Purchase = {
 type Data = { products: Product[]; carts: Cart[]; purchases: Purchase[] };
 
 const defaultData: Data = {
+  // seed data from: https://fakestoreapi.com/
   products: [
     {
       id: 1,

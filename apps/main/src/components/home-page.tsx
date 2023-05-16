@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useEffect, useRef } from "react";
-import { mountPromo } from "marketing/mount-promo";
+import { injectPromo } from "marketing/inject-promo";
 
 export const HomePage = () => {
   const promoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    mountPromo(promoRef.current as HTMLDivElement);
+    injectPromo(promoRef.current as HTMLDivElement);
   }, []);
 
   return (
