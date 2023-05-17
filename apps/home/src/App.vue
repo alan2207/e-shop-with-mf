@@ -1,14 +1,14 @@
 <template>
-  <Promo />
+  <Home />
 </template>
 
 <script lang="ts">
-import Promo from "./components/Promo.vue";
+import Home from "./components/Home.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   components: {
-    Promo,
+    Home,
   },
 });
 </script>

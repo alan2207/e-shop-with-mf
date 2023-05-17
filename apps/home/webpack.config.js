@@ -4,12 +4,12 @@ const { VueLoaderPlugin } = require("vue-loader");
 const { FederatedTypesPlugin } = require("@module-federation/typescript");
 
 const mfConf = {
-  name: "marketing",
+  name: "home",
   filename: "remoteEntry.js",
   remotes: {},
   exposes: {
-    "./Promo": "./src/components/Promo.vue",
-    "./inject-promo": "./src/components/inject-promo.ts",
+    "./Home": "./src/components/Home.vue",
+    "./inject-home": "./src/components/inject-home.ts",
   },
   shared: require("./package.json").dependencies,
 };

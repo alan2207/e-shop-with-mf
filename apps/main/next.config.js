@@ -13,7 +13,7 @@ const getFederationConfig = (isServer) => ({
     checkout: `checkout@http://localhost:3003/_next/static/${
       isServer ? "ssr" : "chunks"
     }/remoteEntry.js`,
-    marketing: `marketing@http://localhost:3004/remoteEntry.js`,
+    home: `home@http://localhost:3004/remoteEntry.js`,
   },
   filename: "static/chunks/remoteEntry.js",
   exposes: {},

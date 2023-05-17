@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useEffect, useRef } from "react";
-import { injectPromo } from "marketing/inject-promo";
+import { injectHome } from "home/inject-home";
 
 export const HomePage = () => {
-  const promoRef = useRef<HTMLDivElement>(null);
+  const homeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    injectPromo(promoRef.current as HTMLDivElement);
+    injectHome(homeRef.current as HTMLDivElement);
   }, []);
 
   return (
@@ -14,7 +14,7 @@ export const HomePage = () => {
       <Head>
         <title>E-Shop Showcase</title>
       </Head>
-      <div ref={promoRef} />
+      <div ref={homeRef} />
     </>
   );
 };
