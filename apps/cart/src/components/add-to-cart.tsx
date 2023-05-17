@@ -1,7 +1,8 @@
 import { Product } from "shared";
-import { Counter } from "shared";
+
 import { useCallback, useState } from "react";
 import { useCart } from "../cart-store";
+import { Quantity } from "./quantity";
 
 export const AddToCart = ({ product }: { product: Product }) => {
   const [quantity, setQuantity] = useState(1);
@@ -20,7 +21,7 @@ export const AddToCart = ({ product }: { product: Product }) => {
       <div className="my-8">
         Quantity
         <br />
-        <Counter initialValue={quantity} onChange={handleQuantityChange} />
+        <Quantity initialValue={quantity} onChange={handleQuantityChange} />
       </div>
       <button
         onClick={() => {

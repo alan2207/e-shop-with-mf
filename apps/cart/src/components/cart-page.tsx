@@ -1,10 +1,11 @@
 import { useCart } from "../cart-store";
-import { Counter, formatPrice, Product } from "shared";
+import { formatPrice, Product } from "shared";
 import Link from "next/link";
 import Head from "next/head";
 
 import { useCallback } from "react";
 import { useRouter } from "next/router";
+import { Quantity } from "./quantity";
 
 export const CartPage = () => {
   const { getCartItems, getCartTotal } = useCart();
@@ -157,7 +158,7 @@ const ProductItem = ({
 
         <div className="flex items-end justify-between flex-1 mt-4">
           <div>
-            <Counter onChange={handleQuantityChange} initialValue={quantity} />
+            <Quantity onChange={handleQuantityChange} initialValue={quantity} />
           </div>
           <div className="ml-4">
             <button

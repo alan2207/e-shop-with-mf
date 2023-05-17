@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const Counter = ({
+export const Quantity = ({
   initialValue = 1,
   onChange,
   min = 1,
@@ -11,21 +11,21 @@ export const Counter = ({
   min?: number;
   max?: number;
 }) => {
-  const [count, setCount] = useState(initialValue);
+  const [quantity, setQuantity] = useState(initialValue);
 
   useEffect(() => {
-    if (count !== initialValue) {
-      onChange?.(count);
+    if (quantity !== initialValue) {
+      onChange?.(quantity);
     }
-  }, [count, initialValue, onChange]);
+  }, [quantity, initialValue, onChange]);
 
   return (
     <span className="gap-8 py-4 border border-black border-1">
       <button
         className="p-4"
         onClick={() => {
-          if (count > min) {
-            setCount((c) => c - 1);
+          if (quantity > min) {
+            setQuantity((c) => c - 1);
           }
         }}
       >
@@ -36,17 +36,17 @@ export const Counter = ({
           const value = parseInt(e.target.value);
 
           if (value >= min && value <= max) {
-            setCount(value);
+            setQuantity(value);
           }
         }}
-        value={count}
+        value={quantity}
         className="w-12 text-center"
       />
       <button
         className="p-4"
         onClick={() => {
-          if (count < max) {
-            setCount((c) => c + 1);
+          if (quantity < max) {
+            setQuantity((c) => c + 1);
           }
         }}
       >
