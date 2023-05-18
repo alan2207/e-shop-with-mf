@@ -4,30 +4,12 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "dependencies": {
-    "@headlessui/react": "^1.7.14",
-    "@heroicons/react": "^2.0.17",
-    "@types/js-cookie": "^3.0.3",
     "@types/node": "18.16.3",
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.3",
-    "clsx": "^1.2.1",
-    "eslint": "8.39.0",
-    "eslint-config-next": "13.4.2",
-    "js-cookie": "^3.0.5",
     "ky": "^0.33.3",
-    "next": "13.4.2",
-    "next-progress": "^2.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.4",
-    "zustand": "^4.3.8"
-  },
-  "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/forms": "^0.5.3",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.2",
-    "tailwindcss-animate": "^1.0.5"
+    "typescript": "5.0.4"
   }
 }

@@ -1,16 +1,16 @@
 import type { AppProps } from "next/app";
-
-import "../styles/globals.css";
 import dynamic from "next/dynamic";
 
-const Shell = dynamic(() =>
-  import("../components/shell").then((mod) => mod.Shell)
+import "../styles/globals.css";
+
+const Layout = dynamic(() =>
+  import("../components/layout").then((mod) => mod.Layout)
 );
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Shell>
+    <Layout>
       <Component {...pageProps} />
-    </Shell>
+    </Layout>
   );
 }

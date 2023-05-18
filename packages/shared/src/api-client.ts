@@ -1,7 +1,7 @@
 import ky from "ky";
 
 export const apiClient = ky.create({
-  prefixUrl: "http://localhost:8080",
+  prefixUrl: "https://fakestoreapi.com",
   headers: {
     "content-type": "application/json",
   },
@@ -30,36 +30,6 @@ export const getProduct = async (id: number): Promise<Product> => {
   return await apiClient.get(`products/${id}`).json();
 };
 
-export type CartItem = {
-  product: Product;
-  quantity: number;
-  total: number;
-};
-
-export type Cart = {
-  items: CartItem[];
-  total: number;
-};
-
-export const getCart = async (): Promise<Cart> => {
-  return await apiClient.get("cart").json();
-};
-
-export type UpdateCartData = {
-  productId: number;
-  quantity: number;
-};
-
-export const updateCart = async (
-  body: UpdateCartData
-): Promise<{ success: boolean }> => {
-  return await apiClient
-    .post("cart", {
-      body: JSON.stringify(body),
-    })
-    .json();
-};
-
 export type CheckoutContactInfo = {
   email: string;
   card_number: string;
@@ -71,8 +41,10 @@ export type CheckoutContactInfo = {
   zip_code: string;
 };
 
-export const processCheckout = (contcatInfo: CheckoutContactInfo) => {
-  return apiClient.post("checkout", {
-    body: JSON.stringify(contcatInfo),
+export const processCheckout = (contactInfo: CheckoutContactInfo) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ success: true, contactInfo });
+    }, 1000);
   });
 };
