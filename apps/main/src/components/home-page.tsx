@@ -12,7 +12,7 @@ export const HomePage = () => {
   return (
     <>
       <Head>
-        <title>E-Shop Showcase</title>
+        <title>E-Shop With MF</title>
       </Head>
       <div ref={homeRef} />
     </>
