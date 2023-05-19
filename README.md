@@ -2,6 +2,10 @@
 
 This project is a simple e-commerce platform built using the micro frontend architecture with Webpack Module Federation. The goal of this project is to demonstrate how to build an application using multiple micro frontends. Includes state management, TypeScript, and more.
 
+## Demo
+
+![Demo](assets/demo.gif)
+
 ## Application Overview
 
 The project consists of five different applications, each serving a unique purpose.
