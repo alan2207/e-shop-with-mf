@@ -11,7 +11,7 @@ export const CheckoutPage = () => {
   const { clearCart } = useCart();
 
   const handleSubmit = (values: CheckoutContactInfo) => {
-    processCheckout().then(() => {
+    processCheckout(values).then(() => {
       alert(`Congratulations! You've successfully placed an order.
   Order details:
   ${JSON.stringify(values, null, 2)}

@@ -1,5 +1,8 @@
 const NextFederationPlugin = require("@module-federation/nextjs-mf");
 const { FederatedTypesPlugin } = require("@module-federation/typescript");
+const { getAppConfig } = require("./config");
+
+const appConfig = getAppConfig();
 
 const getFederationConfig = (isServer) => ({
   name: "cart",
@@ -10,6 +13,9 @@ const getFederationConfig = (isServer) => ({
     "./cart-page": "./src/components/cart-page.tsx",
     "./cart-store": "./src/cart-store.ts",
     "./cart-summary": "./src/components/cart-summary.tsx",
+  },
+  remotes: {
+    ...appConfig.getRemotes(),
   },
   shared: {},
 });

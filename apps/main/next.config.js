@@ -1,19 +1,13 @@
 const NextFederationPlugin = require("@module-federation/nextjs-mf");
 const { FederatedTypesPlugin } = require("@module-federation/typescript");
+const { getAppConfig } = require("./config");
+
+const appConfig = getAppConfig();
 
 const getFederationConfig = (isServer) => ({
   name: "main",
   remotes: {
-    products: `products@http://localhost:3001/_next/static/${
-      isServer ? "ssr" : "chunks"
-    }/remoteEntry.js`,
-    cart: `cart@http://localhost:3002/_next/static/${
-      isServer ? "ssr" : "chunks"
-    }/remoteEntry.js`,
-    checkout: `checkout@http://localhost:3003/_next/static/${
-      isServer ? "ssr" : "chunks"
-    }/remoteEntry.js`,
-    home: `home@http://localhost:3004/remoteEntry.js`,
+    ...appConfig.getRemotes(isServer),
   },
   filename: "static/chunks/remoteEntry.js",
   exposes: {},
