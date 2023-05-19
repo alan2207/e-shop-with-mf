@@ -10,12 +10,12 @@ It consumes the `https://fakestoreapi.com/` API to get the products.
 
 The applications are as follows:
 
-- **Main**: This is the application shell that connects all the other apps together. Built with Next.js, runs by default at `http://localhost:3000`
-- **Products**: This application is responsible for displaying the list of products available for sale on the platform and the product details page with ability to add the product to the cart. Built with Next.js, runs by default at `http://localhost:3001`
-- **Cart**: This application is responsible for managing the items in the user's shopping cart. Built with Next.js, runs by default at `http://localhost:3002`
-- **Checkout**: This application is responsible for handling the checkout process. Built with Next.js, runs by default at `http://localhost:3003`
-- **Home**: This is the application responsible for displaying the home page of the e-commerce platform. Built with Vue.js, runs by default at `http://localhost:3004`
-- Shared: This is the package where all shared code lives.
+- **Main**: This is the application shell that connects all the other apps together. Built with Next.js, runs by default at `http://localhost:3000` and at `http://localhost:4000` when in production mode.
+- **Products**: This application is responsible for displaying the list of products available for sale on the platform and the product details page with ability to add the product to the cart. Built with Next.js, runs by default at `http://localhost:3001` and at `http://localhost:4001` when in production mode.
+- **Cart**: This application is responsible for managing the items in the user's shopping cart. Built with Next.js, runs by default at `http://localhost:3002` and at `http://localhost:4002` when in production mode.
+- **Checkout**: This application is responsible for handling the checkout process. Built with Next.js, runs by default at `http://localhost:3003` and at `http://localhost:4003` when in production mode.
+- **Home**: This is the application responsible for displaying the home page of the e-commerce platform. Built with Vue.js, runs by default at `http://localhost:3004` and at `http://localhost:4004` when in production mode.
+- Shared: This is the package where all shared code lives. Available via the monorepo setup.
 
 ![Architecture Overview](assets/architecture-overview.png)
 
@@ -32,10 +32,11 @@ To get started with the project, follow these steps:
 3. Start the applications using the `npm run dev` command.
 4. Explore the application at `http://localhost:3000`
 5. To build the files for production, run `npm run build`
+6. To serve the production build, run `npm run start`
 
 ## Deployment
 
-Here is how the application could be deployed to production if it was production ready:
+This application is for demo purposes only, but here is how the application could be deployed to production if it was production ready:
 
 ![Deployment Overview](assets/deployment-overview.png)
 
@@ -50,3 +51,7 @@ If you would like to contribute to the project, please follow these steps:
 1. Fork the repository.
 2. Make your changes to the code.
 3. Submit a pull request.
+
+## License
+
+[MIT](LICENSE)
